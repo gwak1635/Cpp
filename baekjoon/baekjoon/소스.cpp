@@ -1,33 +1,36 @@
-#define LENGTH 50
-#include <iostream>
-#include <cstdio>
+#include<iostream>
 using namespace std;
-int main() {
-    int howmany;
-    cin >> howmany;
-    char arr1[howmany][LENGTH];
-    char arr2[howmany][LENGTH];
-    ZeroMemory(arr1, sizeof(arr1));
-    ZeroMemory(arr2, sizeof(arr2));
-    for (int i = 0; i < howmany; i++) {
-        scanf("%s", arr1[i]);
-    }
-    for (int i = 0; i < howmany; i++) {
-        //제일 짧은거 발견하면
-        int min = 1;
-        if (arr1[i][0] == NULL)
-            continue;
-        for (int j = 0; arr[i][j] != NULL; j++) {
-            int count = 0;
-            if (arr[i][j + 1] == NULL)
-                count = j + 1;
+
+int bunhaehap(int num) {
+    int bhh = 0;
+    int temp = num;
+
+    for (int i = 6; i >= 0; i--) {
+        int b = 1;
+        for (int j = 0; j < i; j++) {
+            b *= 10;
         }
-
-
-
-
-        //중복되는게 없다면 복사하고
-        //제일 짧은놈을 지우기
-        ZeroMemory(arr1[i], sizeof(arr1[i]));
+        bhh += temp / b;
+        temp %= b;
     }
+    
+    return (bhh + num);
+}
+
+int main() {
+    int a;
+    cin >> a;
+
+    for (int i = 1; i <= a; i++) {
+        if (bunhaehap(i) == a) {
+            cout << i << endl;
+            break;
+        }
+        if (i == a) {
+            cout << 0 << endl;
+            break;
+        }
+    }
+
+    return 0;
 }
