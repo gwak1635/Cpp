@@ -1,36 +1,27 @@
-#include<iostream>
+#include <iostream>
+
 using namespace std;
 
-int bunhaehap(int num) {
-    int bhh = 0;
-    int temp = num;
-
-    for (int i = 6; i >= 0; i--) {
-        int b = 1;
-        for (int j = 0; j < i; j++) {
-            b *= 10;
-        }
-        bhh += temp / b;
-        temp %= b;
-    }
-    
-    return (bhh + num);
-}
-
 int main() {
-    int a;
+    long long a;
     cin >> a;
+    a+=5;
+    a /= 6;
+    cout << a << endl;
+    int count = 0;
 
-    for (int i = 1; i <= a; i++) {
-        if (bunhaehap(i) == a) {
-            cout << i << endl;
-            break;
-        }
-        if (i == a) {
-            cout << 0 << endl;
-            break;
-        }
+    while (a > 0) {
+        a -= count;
+        count++;
     }
+
+
+
+    cout << count << endl;
+
+    //0 6 18 36 60
+    //첫째항이 0이고 1 3 6 10 
+    // 1 2 3 4
 
     return 0;
 }
